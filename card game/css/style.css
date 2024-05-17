@@ -1,0 +1,90 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: " ", sans-serif;
+  font-weight: 400;
+  background: #F0F4F9;
+  min-width: 320px;
+}
+
+.container {
+  max-width: 1400px;
+  padding: 0 150px;
+  margin: auto;
+}
+
+.game {
+  max-width: 700px;
+  padding: 90px 0;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: auto;
+justify-content: center;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 20%;
+  min-height: 190px;
+  background-color: #014D69;
+  border-radius: 10px;
+  font-size: 0;
+  cursor: pointer;
+  transition: background-color .3s ;
+}
+
+.card:hover {
+  background-color: #0B87BA;
+}
+
+.card__open {
+  font-size: 50px;
+  background-color: #D38F5E;
+  cursor: default;
+  color: #f3f3f4;
+}
+
+.card__open:hover {
+  background-color:#D38F5E;
+}
+
+.card__loyal {
+  background-color:#F3AE5F;
+  color: #f3f3f4;
+  font-size: 50px;
+  cursor: default;
+}
+
+.card__loyal:hover {
+  background-color:#F3AE5F;
+}
+
+.game__btn {
+  background-color: #014D69;
+  color: #f3f3f4;
+  cursor: pointer;
+  padding: 20px 40px;
+  border-radius: 8px;
+  border: none;
+  font-size: 20px;
+  transition: background-color .3s ;
+}
+
+.game__btn:hover {
+  background-color: #0B87BA;
+}
+
+.game__btn:active {
+  background-color:  #D38F5E;
+}

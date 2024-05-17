@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Список студентов</title>
+  <script defer src="main.js"></script>
+</head>
+
+<body>
+  <main>
+    <section class="student">
+      <div class="container">
+        <div class="student__container">
+          <div class="row">
+            <div class="col-4">
+              <div class="student__filter filter" id="div">
+                <h2 class="filter__title">
+                  Фильтр поиска
+                </h2>
+                <form id="filter__form" class="filter__form" action="">
+                  <input name="fullName" class="filter__input" type="text" placeholder="ФИО">
+                  <input name="faculty" class="filter__input" type="text" placeholder="Факультет">
+                  <input name="yearStudies" class="filter__input" type="text" placeholder="Год начала обучения">
+                  <input name="endStudies" class="filter__input" type="text" placeholder="Год окончания обучения">
+                </form>
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="student__add add">
+                <div class="add__info">
+                  <h2 class="add__title">
+                    Добавить нового студента
+                  </h2>
+                  <button id="btn" form="form" class="add__btn">
+                    Добавить
+                  </button>
+                </div>
+                <form id="form" class="add__form form" action="">
+                  <div class="form__fullname">
+                    <input class="add__input add__input-name" name="sureName" type="text" placeholder="Фамилия">
+                    <input class="add__input add__input-name" name="name" type="text" placeholder="Имя">
+                    <input class="add__input add__input-name" name="fullName" type="text" placeholder="Отчество">
+                  </div>
+                  <input class="add__input" name="date" type="date" placeholder="Дата рождения">
+                  <input class="add__input" name="yearStudies" type="text" placeholder="Год начала обучения">
+                  <input class="add__input" name="faculty" type="text" placeholder="Факультет">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="student__main">
+          <div class="row">
+            <div class="col">
+              <div class="student__table">
+                <h1 class="student__title">
+                  Cписок студентов
+                </h1>
+                <table id="table" class="table table-bordered table-style">
+                    <thead id="thead">
+
+                    </thead>
+                    <tbody id="tbody">
+
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

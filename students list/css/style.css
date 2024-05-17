@@ -1,0 +1,232 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto-Regular"),
+    url("../fonts/RobotoRegular.woff2") format("woff2"),
+    url("../fonts/RobotoRegular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto-Bold"),
+    url("../fonts/RobotoBold.woff2") format("woff2"),
+    url("../fonts/RobotoBold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  background: #e6e9ef;
+  min-width: 320px;
+}
+
+/* glob */
+
+a {
+  text-decoration: none;
+  color: inherit;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+
+/* style */
+
+
+.student__container {
+  margin-bottom: 30px;
+}
+
+.student {
+  padding: 40px 0;
+}
+
+.student__filter {
+  background: #112449;
+  padding: 30px 20px;
+  border-radius: 10px;
+}
+
+
+.filter__title {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  color: #e9edf1;
+}
+
+.filter__title svg {
+  position: relative;
+  top: 5px;
+}
+
+.student__add {
+  padding: 20px 20px 30px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.filter__form {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filter__input {
+  flex: 1 0 100%;
+  background-color: #e9edf1;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #112449;
+}
+
+.filter__input::placeholder {
+  color: #a4b4c4;
+  font-size: 16px;
+}
+
+.filter__input:hover::placeholder {
+  color: #286cb0;
+}
+
+.add__info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.add__title {
+  font-size: 20px;
+  font-weight: 400;
+  color: #112449;
+  align-self: center;
+}
+
+.add__btn {
+  background-color: #112449;
+  color: #fff;
+  padding: 10px 30px;
+  max-width: 20%;
+  border-radius: 10px;
+}
+
+.add__btn:hover {
+  background-color: #2b3851;
+}
+
+.add__btn:active {
+  background-color: #112449;
+}
+
+.add__form {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add__input {
+  flex: 1 0 100%;
+  background-color: #e9edf1;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #112449;
+}
+
+.add__input::placeholder {
+  color: #a4b4c4;
+  font-size: 16px;
+}
+
+.add__input-error {
+  background-color: rgb(251, 201, 201);
+  color: red;
+}
+
+.add__input:hover::placeholder {
+  color: #286cb0;
+}
+
+.add__title svg {
+  width: 23px;
+  height: 23px;
+  position: relative;
+  top: 5px;
+  margin-right: 5px;
+}
+
+.student__main {
+  padding: 20px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.student__title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #112449;
+  margin-bottom: 20px;
+}
+
+.table__th {
+  cursor: pointer;
+}
+
+.table__th:hover {
+  background-color: #e9edf1;
+}
+
+.form__fullname {
+ display: flex;
+ gap: 10px;
+}
+
+.add__input-name {
+flex: 1 0 20%;
+}
