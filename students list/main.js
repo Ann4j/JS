@@ -2,12 +2,12 @@
 // Масссив студентов
 const studentsList = [
   {
-    sureName: 'Иваново',
+    sureName: 'Иванов',
     name: "Иван",
     fullName: 'Иванович',
     date: new Date('06.04.1997'),
     yearStudies: 2020,
-    faculty: 'Высшая маематика'
+    faculty: 'Высшая математика'
   },
   {
     sureName: 'Чернышева',
@@ -120,20 +120,20 @@ for (const column of columns) {
   tableHeader.textContent = column.name;
   // сортировка
   tableHeader.addEventListener('click', function () {
-
+    let filterStudentsList = filter(studentsList);
     if (tableHeader.textContent === 'Годы обучения') {
-      studentsList.sort((a, b) => sortNumber(a.yearStudies, b.yearStudies));
+      filterStudentsList.sort((a, b) => sortNumber(a.yearStudies, b.yearStudies));
     } else if (tableHeader.textContent === 'Фамилия') {
-      studentsList.sort((a, b) => sortString(a.sureName, b.sureName));
-    }else if (tableHeader.textContent === 'Имя') {
-      studentsList.sort((a, b) => sortString(a.name, b.name));
+      filterStudentsList.sort((a, b) => sortString(a.sureName, b.sureName));
+    } else if (tableHeader.textContent === 'Имя') {
+      filterStudentsList.sort((a, b) => sortString(a.name, b.name));
     } else if (tableHeader.textContent === 'Отчество') {
-      studentsList.sort((a, b) => sortString(a.fullName, b.fullName));
+      filterStudentsList.sort((a, b) => sortString(a.fullName, b.fullName));
     } else if (tableHeader.textContent === 'Дата рождения') {
-      studentsList.sort((a, b) => sortNumber(b.date, a.date));
+      filterStudentsList.sort((a, b) => sortNumber(b.date, a.date));
     }
     tbody.innerHTML = '';
-    renderTable(studentsList)
+    renderTable(filterStudentsList)
   })
   thead.append(tableRowHeader);
   tableRowHeader.append(tableHeader)
@@ -142,6 +142,7 @@ for (const column of columns) {
 // включаем данные из массива объектов в таблицу
 
 const tbody = document.getElementById("tbody")
+
 function renderTable(studentsList) {
   for (const rowStudent of studentsList) {
     let tableRowBody = document.createElement('tr')
@@ -169,8 +170,6 @@ form.addEventListener('submit', function (event) {
   // достаем данные из формы
   const formData = new FormData(form);
   const user = Object.fromEntries(formData);
-
-  console.log(user)
 
   //выполняем валидацию
   const allInputs = form.querySelectorAll('input')
@@ -233,25 +232,29 @@ let storageFilters = {};
 for (let filterInput of filterInputs) {
   filterInput.addEventListener('input', function () {
     storageFilters[filterInput.name] = filterInput.value
-    const filterStudentsList = [];
-    for (let student of studentsList) {
-      if (student.sureName.toLowerCase().includes(storageFilters.fullName) || student.name.toLowerCase().includes(storageFilters.fullName) || student.fullName.toLowerCase().includes(storageFilters.fullName) ) {
-        filterStudentsList.push(student)
-      }
-      if (student.faculty.includes(storageFilters.faculty)) {
-        filterStudentsList.push(student)
-      }
-      if (student.yearStudies == storageFilters.yearStudies) {
-        filterStudentsList.push(student)
-      }
-      if (student.yearStudies + 4 == storageFilters.yearStudies) {
-        filterStudentsList.push(student)
-      }
-      tbody.innerHTML = '';
-      renderTable(filterStudentsList)
-    }
+    tbody.innerHTML = '';
+    renderTable(filter(studentsList))
   });
+};
+
+function filter(studentsList) {
+  let filterStudentsList = studentsList;
+  if (storageFilters.fullName) {
+    filterStudentsList = filterStudentsList.filter(student => student.name.toLowerCase().includes(storageFilters.fullName) || student.sureName.toLowerCase().includes(storageFilters.fullName) || student.fullName.toLowerCase().includes(storageFilters.fullName))
+  }
+  if (storageFilters.faculty) {
+    filterStudentsList = filterStudentsList.filter(student => student.faculty.toLowerCase().includes(storageFilters.faculty))
+  }
+  if (storageFilters.yearStudies) {
+    filterStudentsList = filterStudentsList.filter(student => student.yearStudies === Number(storageFilters.yearStudies))
+  }
+  if (storageFilters.endStudies) {
+    filterStudentsList = filterStudentsList.filter(student => (student.yearStudies + 4) == Number(storageFilters.endStudies))
+  }
+  return filterStudentsList
 }
+
+
 
 
 
