@@ -188,7 +188,7 @@ form.addEventListener('submit', function (event) {
     if (input.name === 'yearStudies') {
       user.yearStudies = new Number(input.value);
       console.log(user.yearStudies > 2023)
-      if (user.yearStudies > 2023 || user.yearStudies < 2000) {
+      if (user.yearStudies > 2023 || user.yearStudies < 2000 || isNaN(input.value)) {
         input.classList.add('add__input-error');
         input.value = "Неккоректный год обучения";
         isValid = false;
@@ -240,19 +240,20 @@ for (let filterInput of filterInputs) {
 function filter(studentsList) {
   let filterStudentsList = studentsList;
   if (storageFilters.fullName) {
-    filterStudentsList = filterStudentsList.filter(student => student.name.toLowerCase().includes(storageFilters.fullName) || student.sureName.toLowerCase().includes(storageFilters.fullName) || student.fullName.toLowerCase().includes(storageFilters.fullName))
+    filterStudentsList = filterStudentsList.filter(student => names.every(name => student.name.toLowerCase().includes(name) || student.sureName.toLowerCase().includes(name) || student.fullName.toLowerCase().includes(name)))
   }
   if (storageFilters.faculty) {
-    filterStudentsList = filterStudentsList.filter(student => student.faculty.toLowerCase().includes(storageFilters.faculty))
+    filterStudentsList = filterStudentsList.filter(student => student.faculty.toLowerCase().includes(storageFilters.faculty.toLowerCase()))
   }
   if (storageFilters.yearStudies) {
-    filterStudentsList = filterStudentsList.filter(student => student.yearStudies === Number(storageFilters.yearStudies))
+    filterStudentsList = filterStudentsList.filter(student => student.yearStudies.toString().includes(storageFilters.yearStudies))
   }
   if (storageFilters.endStudies) {
-    filterStudentsList = filterStudentsList.filter(student => (student.yearStudies + 4) == Number(storageFilters.endStudies))
+    filterStudentsList = filterStudentsList.filter(student => (student.yearStudies + 4).toString().includes(storageFilters.endStudies))
   }
   return filterStudentsList
 }
+
 
 
 
